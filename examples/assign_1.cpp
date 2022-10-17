@@ -1,26 +1,30 @@
 //stl
 #include <iostream>
+#include <string>
 //opencv
 #include <opencv2/opencv.hpp>
 //local
 #include "interrupt.hpp"
 
-#define IMG_PATH "C:\\Users\\Pc\\Desktop\\cv_project\\2017035122_±èÈ£°É_°úÁ¦1\\data\\"
+#define IMG_WIDTH 640
+#define IMG_HEIGHT 480
+
+#define IMG_PATH "C:\\Users\\Pc\\Desktop\\cv_project\\2017035122_ê¹€í˜¸ê±¸_ê³¼ì œ1\\data\\"
 #define IMG_NAME "lina.jpg"
 
-/*1. ÀÔ·Â ¿µ»óÀ» ÄÃ·¯·Î È­¸é¿¡ ¶ç¿ì°í ¸¶¿ì½º·Î ROI¸¦ ÀÔ·Â¹ŞÀº ÈÄ¿¡ ÀÔ·Â¹ŞÀº ¿µ¿ªÀ» Mat Å¬·¡½ºÀÇ at( ) ÇÔ¼ö¸¦ »ç¿ëÇØ¼­ RÀÇ °ª¿¡ 10À» ´õÇÏ°í, GÀÇ °ª¿¡ 15À» »©°í, BÀÇ °ª¿¡ 30¸¦ ´õÇÑ ÈÄ¿¡ 
-ÀüÃ¼ ¿µ»óÀ» ´Ù½Ã Ãâ·ÂÇÏ½Ã¿À */
+/*1. ì…ë ¥ ì˜ìƒì„ ì»¬ëŸ¬ë¡œ í™”ë©´ì— ë„ìš°ê³  ë§ˆìš°ìŠ¤ë¡œ ROIë¥¼ ì…ë ¥ë°›ì€ í›„ì— ì…ë ¥ë°›ì€ ì˜ì—­ì„ Mat í´ë˜ìŠ¤ì˜ at( ) í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•´ì„œ Rì˜ ê°’ì— 10ì„ ë”í•˜ê³ , Gì˜ ê°’ì— 15ì„ ë¹¼ê³ , Bì˜ ê°’ì— 30ë¥¼ ë”í•œ í›„ì— 
+ì „ì²´ ì˜ìƒì„ ë‹¤ì‹œ ì¶œë ¥í•˜ì‹œì˜¤ */
 
-//int main(int argc, char** argv)
-//{
-//  Interrupt::interrupt interrupt_class;
-//  //image load
-//  std::string image_path = IMG_PATH;
-//  image_path += IMG_NAME;
-//  if (!interrupt_class.init(image_path)) {
-//    return -1;
-//  }
-//  interrupt_class.setRoi();
-//  cv::waitKey(0);
-//  return 0;
-//}
+int main(int argc, char** argv)
+{
+	Interrupt::interrupt interrupt_class;
+	std::string img_path = IMG_PATH;
+	img_path += IMG_NAME;
+	cv::Size img_size(IMG_WIDTH, IMG_HEIGHT);
+	interrupt_class.init(img_path, img_size);
+	//interrupt_class.setRoi();
+	interrupt_class.trackbarControl();
+	
+	cvWaitKey(0);
+ 	return 0;
+}
